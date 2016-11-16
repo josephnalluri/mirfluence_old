@@ -1,1 +1,1 @@
-# mirid
+# removed mirid folder
