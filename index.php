@@ -60,7 +60,14 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
          
       </div>
   
-	  <h4>Please select a disease below</h4>
+      <ul class = "nav nav-tabs">
+         <li class="active"><a href="#disease_category">Disease Category</a></li>
+         <li><a href="#">Individual Disease</a></li>
+         <li><a href="#">Create your own category</a></li>
+      </ul>
+    
+ <div id="disease_category">
+       <h4>Please select a disease below</h4>
 	   <!-- <form action="onSubmit.php" method="post" id="form" name="form" style="width: 500px"> -->
 		 <!--  <form ="" method="post" id="form" name="form" style="width: 500px">-->
 		 <form id = "form">
@@ -111,6 +118,7 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 	  <div id = "graph-bottom"> </div>
     </div>    
   </div>
+</div>
 </div>
 
 <!-- PHP code to POST the form and run thequery -->
