@@ -116,9 +116,15 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
     <!-- Code for 2nd tab: Disease category -->
     <div class="tab-pane active" id="disease_category">
       <h5>Please choose a disease category</h5>
-		 <form id = "form">
-		  <div id = "selectDiseaseform">
-		   <select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
+		 <form id = "disease_category_form">
+		  <div id = "disease_category_selectDiseaseform">
+		   <select name ="disease_category_dis" id = "disease_category_selectDropdown" class="form-control"> 
+            <option>Choose disease category</option>
+            <option>Gastrointestinal cancers</option>
+            <option>Leukemia cancers</option>
+            <option>Endocrine cancers</option>
+            <option>Nerver cancers</option>
+          </select><br>
 		  </div> <!-- End div tag for id selectDiseaseform -->
             <br>		  
 			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
