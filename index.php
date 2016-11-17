@@ -43,20 +43,12 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 <div class="container">
   <div class="jumbotron">
     <h1>Identifying influential miRNA targets in diseases via influence diffusion model</h1>
-<<<<<<< HEAD
   </div><!-- End div for jumbotron-->
-=======
-  </div>
->>>>>>> fc639bbec583ee25567c7d2ae90d8868bf773c07
   <div class="row">
     <div class="col-sm-10">
 	
       <h3>This tool predicts influential disease-miRNAs in several diseases based on influence diffusion model. These miRNAs tend to work closely in diseases of similar profiles. </h3>
 	
-<<<<<<< HEAD
-=======
-	  
->>>>>>> fc639bbec583ee25567c7d2ae90d8868bf773c07
 	  <div class="alert alert-success">
          <strong>Note:</strong> <br>
 		 1. Users can view individual miRNA-miRNA predicted interactions for a specific disease <br>
@@ -64,16 +56,17 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 		 3. Some queries can take upto 1 minute to load based on the selection <br>
 		 4. <strong>Maximum</strong> and <strong>Minimum</strong> input fields are <i>probablity scores</i> meant for user to specify the confidence-range.<br>
 		 5. Upon <strong>Submit</strong> the miRNA-miRNA interactions will be displayed below. <br>
-<<<<<<< HEAD
       </div> <!-- End div for class=alert-sucess-->
   
+      <!-- Implementing tab-panel (1/2)-->
       <ul class = "nav nav-tabs">
          <li class="active"><a href="#disease_category" data-toggle="tab">Disease Category</a></li>
          <li><a href="#individual_disease" data-toggle="tab">Individual Disease</a></li>
          <li><a href="#create_category" data-toggle="tab">Create your own category</a></li>
       </ul>
 
-    <div class="tab-content">
+    <!-- Implementing tab panel (2/2)-->
+     <div class="tab-content">
     
       <div class="tab-pane" id="individual_disease">
       <h5>Please select a disease below</h5>
@@ -81,29 +74,6 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 		  <div id = "selectDiseaseform">
 		   <select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
 		  </div> <!-- End div tag for id selectDiseaseform -->
-=======
-         
-      </div>
-  
-      <ul class = "nav nav-tabs">
-         <li class="active"><a href="#disease_category">Disease Category</a></li>
-         <li><a href="#individual_disease">Individual Disease</a></li>
-         <li><a href="#">Create your own category</a></li>
-      </ul>
-
- <div id="individual_disease">
-   <h4> This tab is for individual disease</h4>
- </div> 
-    
- <div id="disease_category">
-       <h4>Please select a disease below</h4>
-	   <!-- <form action="onSubmit.php" method="post" id="form" name="form" style="width: 500px"> -->
-		 <!--  <form ="" method="post" id="form" name="form" style="width: 500px">-->
-		 <form id = "form">
-		  <div id = "selectDiseaseform">
-			<select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
-		  </div>
->>>>>>> fc639bbec583ee25567c7d2ae90d8868bf773c07
             <br>		  
 			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
 			<br><br>
@@ -116,29 +86,18 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 			  
 			   <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
 	        <br><br>
-<<<<<<< HEAD
 	     </form>
 	 
 	   <!-- Taken from: https://myzeroorone.wordpress.com/2015/03/02/creating-simple-please-wait-dialog-with-twitter-bootstrap/--> 
 	   <!-- Modal Start here-->
 	   <div class="modal fade bs-example-modal-sm" id="myPleaseWait" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
 	 	<div class="modal-dialog modal-sm">
-=======
-	   </form>
-	 
-	<!-- Taken from: https://myzeroorone.wordpress.com/2015/03/02/creating-simple-please-wait-dialog-with-twitter-bootstrap/--> 
-	<!-- Modal Start here-->
-	<div class="modal fade bs-example-modal-sm" id="myPleaseWait" tabindex="-1"
-		role="dialog" aria-hidden="true" data-backdrop="static">
-		<div class="modal-dialog modal-sm">
->>>>>>> fc639bbec583ee25567c7d2ae90d8868bf773c07
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">
 						<span class="glyphicon glyphicon-time">
 						</span> Please Wait... loading results and visualization
 					 </h5>
-<<<<<<< HEAD
 				</div> <!-- End div for class modal-header -->
 				<div class="modal-body">
 					<div class="progress">
@@ -168,14 +127,13 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
             <option>Endocrine cancers</option>
             <option>Nerver cancers</option>
           </select><br>
-		  </div> <!-- End div tag for id selectDiseaseform -->
+          
+          <!-- Option for network generation. Option 1 is checked by default -->
+             <label class="radio-inline"><input type="radio" name="optradio" id="nw_gen_method_0.9" checked=""> All edges above 0.9 score and rescored to 0.05</label>
+             <label class="radio-inline"><input type="radio" name="optradio" id="nw_gen_method_opt"> Optimized network based on expression scores</label>
+          
+		  </div> <!-- End div tag for id=disease_category_selectDiseaseform -->
             <br>		  
-			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
-			<br><br>
-			
-			Maximum Score: <input type="text" id="max" name="max" size="4">  &nbsp;  &nbsp;
-			Minimum Score: <input type="text" id="min" name="min" size="4"> &nbsp;  &nbsp; <i>[<b>Default</b>: Max is 1 and Min is 0.5000]</i>		
-		   
 		    <hr>
 			  <button onclick = "onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
 			  
@@ -195,29 +153,6 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
  </div> <!-- End div tag for class="col-sm-10"-->
 </div><!-- End div tag for class=row -->
 </div><!-- End div tag for class=container -->
-=======
-				</div>
-				<div class="modal-body">
-					<div class="progress">
-						<div class="progress-bar progress-bar-info
-						progress-bar-striped active"
-						style="width: 100%">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal ends Here -->
-     <a href="/miRsig/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
- 	  <!-- Placeholder for graph --> 
-	  <div id="graph" tabindex="0"></div>
-	  <div id = "graph-bottom"> </div>
-    </div>    
-  </div>
-</div>
-</div>
->>>>>>> fc639bbec583ee25567c7d2ae90d8868bf773c07
 
 <!-- PHP code to POST the form and run thequery -->
 
@@ -427,7 +362,4 @@ function onSubmit(){
 });
 }
 
-</script>
 
-</body>
-</html>
