@@ -62,9 +62,13 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
   
       <ul class = "nav nav-tabs">
          <li class="active"><a href="#disease_category">Disease Category</a></li>
-         <li><a href="#">Individual Disease</a></li>
+         <li><a href="#individual_disease">Individual Disease</a></li>
          <li><a href="#">Create your own category</a></li>
       </ul>
+
+ <div id="individual_disease">
+   <h4> This tab is for individual disease</h4>
+ </div> 
     
  <div id="disease_category">
        <h4>Please select a disease below</h4>
