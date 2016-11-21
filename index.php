@@ -58,14 +58,14 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 		 5. Upon <strong>Submit</strong> the miRNA-miRNA interactions will be displayed below. <br>
       </div> <!-- End div for class=alert-sucess-->
   
-      <!-- Implementing tab-panel (1/2)-->
+      <!-- Implementing tab-panel navigation -->
       <ul class = "nav nav-tabs">
          <li class="active"><a href="#disease_category" data-toggle="tab">Disease Category</a></li>
          <li><a href="#individual_disease" data-toggle="tab">Individual Disease</a></li>
          <li><a href="#create_category" data-toggle="tab">Create your own category</a></li>
       </ul>
 
-    <!-- Implementing tab panel (2/2)-->
+    <!-- Implementing tab panel for "Individual disease" -->
      <div class="tab-content">
     
       <div class="tab-pane" id="individual_disease">
@@ -135,7 +135,7 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 		  </div> <!-- End div tag for id=disease_category_selectDiseaseform -->
             <br>		  
 		    <hr>
-			  <button onclick = "onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
+			  <button onclick = "disease_category_onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
 			  
 			   <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
 	        <br><br>
@@ -155,8 +155,6 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 </div><!-- End div tag for class=container -->
 
 <!-- PHP code to POST the form and run thequery -->
-
-
 <?php
 //Do it later if there are 3 diseases:		
 //	$dis = $_POST["dis"];
@@ -188,9 +186,6 @@ if (!empty($_POST["dis"]))
 }
 
 ?> 
-
-
-
 
 <!-- Script to send disease names to JavaScript and populate the dropdown   -->
 <script type="text/javascript">
@@ -269,7 +264,7 @@ function isBlank(str)
 <!-- <script src="http://code.jquery.com/jquery-1.11.3.js"></script> -->
 <script src="https://rawgit.com/gka/d3-jetpack/master/d3-jetpack.js"></script>
  
- <script type="text/javascript">
+<script type="text/javascript">
 
 function onSubmit(){
    	var disSelected = document.getElementById("selectDropdown").value;
@@ -362,4 +357,6 @@ function onSubmit(){
 });
 }
 
-
+</script>
+</body>
+</html>
