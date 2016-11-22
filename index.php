@@ -28,8 +28,6 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="googleTableCss.css">
   <link rel="stylesheet" href="graphCSS.css"> 
-  <!--<link rel="stylesheet" href="newG.css">-->
-  <!--<link rel="stylesheet" href="mSTG.css">-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="drawGraph.js"></script> 
@@ -145,8 +143,8 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
      <a href="/mirid/CSV/network.csv" id="disease_category_downloadCSV" style="display:none;"> Download the network (CSV) </a>
 
      <!-- Placeholder for disease category graph -->
-     <div id="disease_category_graph" tabindex="0">
-     </div> <!-- End div tag for id="disease_category_graph"-->      
+     <div id="disease_category_graph" tabindex="0"></div>
+     
 
   </div> <!-- End div for id=disease_category -->
    
@@ -318,8 +316,7 @@ function onSubmit(){
 			  'maxSelected':maxSelected,
 			  'counterID':counterID};
 	          break;
-	}
-	
+	}	
 	$("#myPleaseWait").modal("show");
 	//Ajax request
 	$.ajax({
@@ -390,21 +387,21 @@ function disease_category_onSubmit(){
              alert("No results for this selection. Please try reducing the number of diseases or widening the range of score. ");
            }
           else
-           {  //console.log(dataReceived);
-              createGraph(JSON.parse(dataReceived),"#disease_category_graph", counterID); 
+           { // console.log(dataReceived);
+              createGraph(JSON.parse(dataReceived),"#disease_category_graph"); 
            }
          }
-         else
-           {
-             alert("No results from the selected specification"); 
-           }
+   else
+       {
+         alert("No results from the selected specification"); 
+       }
     },
     error: function(jqXHR, textStatus, errorThrown) 
     {
       $('#myPleaseWait').modal('hide');
       console.log(jqXHR.responseText);
       console.log(errorThrown);
-     }  
+    }  
 }); 
 }
 </script>
