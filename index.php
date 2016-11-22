@@ -18,8 +18,6 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 }
 ?>
 
- 
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,41 +108,50 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 	   <!-- Modal ends Here -->
 
       <a href="/miRsig/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
+
  	  <!-- Placeholder for graph --> 
 	  <div id="graph" tabindex="0"></div>
 	  <div id = "graph-bottom"> </div>
-    </div> <!-- End div tag for id=disease_category-->
+   </div> <!-- End div tag for id=individual_disease-->
 
     <!-- Code for 2nd tab: Disease category -->
     <div class="tab-pane active" id="disease_category">
       <h5>Please choose a disease category</h5>
 		 <form id = "disease_category_form">
 		  <div id = "disease_category_selectDiseaseform">
-		   <select name ="disease_category_dis" id = "disease_category_selectDropdown" class="form-control"> 
-            <option>Choose disease category</option>
-            <option>Gastrointestinal cancers</option>
-            <option>Leukemia cancers</option>
-            <option>Endocrine cancers</option>
-            <option>Nerver cancers</option>
-          </select><br>
+		     <select name ="disease_category_dis" id = "disease_category_selectDropdown" class="form-control"> 
+               <option>Choose disease category</option>
+               <option>Gastrointestinal cancers</option>
+               <option>Leukemia cancers</option>
+               <option>Endocrine cancers</option>
+               <option>Nerver cancers</option>
+             </select><br>
           
-          <!-- Option for network generation. Option 1 is checked by default -->
-             <label class="radio-inline"><input type="radio" name="optradio" id="nw_gen_method_0.9" checked=""> All edges above 0.9 score and rescored to 0.05</label>
-             <label class="radio-inline"><input type="radio" name="optradio" id="nw_gen_method_opt"> Optimized network based on expression scores</label>
+            <!-- Option for network generation. Option 1 is checked by default -->
+            <h5>Please choose a network generation method</h5>
+            <select name="network_gen_method" id="network_gen_method_dropdown" class="form-control">
+              <option selected="selected">All edges above 0.9 score, rescored to 0.05</option>
+              <option>Optimized network based on expression scores</option>
+            </select>
           
-		  </div> <!-- End div tag for id=disease_category_selectDiseaseform -->
-            <br>		  
-		    <hr>
-			  <button onclick = "disease_category_onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
-			  
-			   <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
-	        <br><br>
-	     </form>
+	      </div> <!-- End div tag for id=disease_category_selectDiseaseform -->
+          <br>		  
+	      <hr>
+		  <button onclick = "disease_category_onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
+		  <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
+	      <br><br>
+	    </form>
       
-    </div> <!-- End div for id=individual_disease -->
+     <a href="/mirid/CSV/network.csv" id="disease_category_downloadCSV" style="display:none;"> Download the network (CSV) </a>
 
-  
-   <!-- Code for 3rd tab: Create your own category-->
+     <!-- Placeholder for disease category graph -->
+     <div id="disease_category_graph" tabindex="0">
+     </div> <!-- End div tag for id="disease_category_graph"-->      
+
+  </div> <!-- End div for id=disease_category -->
+   
+
+    <!-- Code for 3rd tab: Create your own category-->
     <div class="tab-pane" id="create_category">
        <h4>This tab is for creating your own category</h4>
     </div><!-- End div tag for id=create_category -->
@@ -265,7 +272,6 @@ function isBlank(str)
 <script src="https://rawgit.com/gka/d3-jetpack/master/d3-jetpack.js"></script>
  
 <script type="text/javascript">
-
 function onSubmit(){
    	var disSelected = document.getElementById("selectDropdown").value;
 	var minSelected = document.getElementById("min").value;
@@ -356,7 +362,54 @@ function onSubmit(){
 	 }	
 });
 }
-
 </script>
+
+<!-- Script to implement disease_Category_onSubmit() -->
+<script type="text/javascript">
+function disease_category_onSubmit(){
+  var disCategorySelected = document.getElementById("disease_category_selectDropdown").value;
+  var netGenMethod = document.getElementById("network_gen_method_dropdown").value;
+  
+  // A quick way to check if the variables have captured the values properly
+  //window.alert(disCategorySelected + " " + netGenMethod); 
+ 
+  $("#myPleaseWait").modal("show");
+  // Ajax request
+  $.ajax({
+  type: "POST",
+  url: "disease_category_onSubmit.php",
+  data: {'disCategorySelected':disCategorySelected,
+         'netGenMethod':netGenMethod},
+  success: function(dataReceived){
+   $('#myPleaseWait').modal("hide");
+   if (dataReceived){
+       $("#disease_category_graph").empty();
+       $("#disease_category_downloadCSV").show();
+       if (dataReceived.indexOf("null")> -1)
+           {
+             alert("No results for this selection. Please try reducing the number of diseases or widening the range of score. ");
+           }
+          else
+           {  //console.log(dataReceived);
+              createGraph(JSON.parse(dataReceived),"#disease_category_graph", counterID); 
+           }
+         }
+         else
+           {
+             alert("No results from the selected specification"); 
+           }
+    },
+    error: function(jqXHR, textStatus, errorThrown) 
+    {
+      $('#myPleaseWait').modal('hide');
+      console.log(jqXHR.responseText);
+      console.log(errorThrown);
+     }  
+}); 
+}
+</script>
+
+
+
 </body>
 </html>
