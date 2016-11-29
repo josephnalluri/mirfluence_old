@@ -1,7 +1,8 @@
-<?php
+?php
 //Header files
 require_once('dbAcess.php');  // Connect to Database
-$query = "SELECT d1 from d1_from_consensus order by d1 asc";
+//$query = "SELECT d1 from d1_from_consensus order by d1 asc";
+$query = "SELECT distinct disease from mirna_rescored order by disease asc";
 $queryResult = mysqli_query($dbConnect, $query) or die("Error in the query" . mysqli_error($dbConnect));
 
 $diseaseArray = array();
@@ -207,7 +208,7 @@ function fillDropdown()
   
   for(var i = 0; i<diseaseList.length; i++)
    { 
-	  var disName = diseaseList[i].d1;
+	  var disName = diseaseList[i].disease; <!-- disease is the column name derived from the query-->
 	  var option = document.createElement("option");
 	  option.textContent = disName;
 	  option.value = disName;
@@ -243,7 +244,7 @@ function addDisease()
 	  
 	   for(var i = 0; i<diseaseList.length; i++)
 		{ 
-		  var disName = diseaseList[i].d1;
+		  var disName = diseaseList[i].disease;
 		  var option = document.createElement("option");
 		  option.textContent = disName;
 		  option.value = disName;
@@ -368,7 +369,7 @@ function disease_category_onSubmit(){
   var netGenMethod = document.getElementById("network_gen_method_dropdown").value;
   
   // A quick way to check if the variables have captured the values properly
-  //window.alert(disCategorySelected + " " + netGenMethod); 
+ // window.alert(disCategorySelected + " " + netGenMethod); 
  
   $("#myPleaseWait").modal("show");
   // Ajax request
@@ -384,10 +385,11 @@ function disease_category_onSubmit(){
        $("#disease_category_downloadCSV").show();
        if (dataReceived.indexOf("null")> -1)
            {
-             alert("No results for this selection. Please try reducing the number of diseases or widening the range of score. ");
+              //console.log(dataReceived);
+              alert("No results for this selection. Please try reducing the number of diseases or widening the range of score. ");
            }
           else
-           { // console.log(dataReceived);
+           {  console.log(dataReceived);
               createGraph(JSON.parse(dataReceived),"#disease_category_graph"); 
            }
          }
