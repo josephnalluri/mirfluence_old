@@ -12,9 +12,7 @@ if($counterID == 1)
 	 $disease = mysqli_real_escape_string($dbConnect, $_POST["disSelected"]);
 	 $min = mysqli_real_escape_string($dbConnect, $_POST["minSelected"]);
 	 $max = mysqli_real_escape_string($dbConnect, $_POST["maxSelected"]);
-	 $query = 
-		"SELECT 
-				m1 AS source,
+	 $query = "SELECT m1 AS source,
 				m2 AS target,
 				score AS type 
 		FROM consensus_avg_pancancer 

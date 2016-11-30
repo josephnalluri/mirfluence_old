@@ -1,7 +1,9 @@
 function createGraph(jsonData,tabDiv,counterID)
 {
-
+  
+ // Checking the parameters
  // console.log(jsonData);
+ // console.log(tabDiv);
 
   jsonData.sort(function(a,b){if(a.source>b.source){return 1;}
   else if(a.source<b.source){return-1;}
@@ -48,10 +50,19 @@ for(var i=0;i<jsonData.length;i++) {
 
     for(var i=0;i<jsonData.length;i++){arrows[i]=jsonData[i].type;};
 
-    //var w=1000,h=800;
     var w= 900, h=800;
-    var w = document.getElementById("graph").offsetWidth;
 
+   // var w = document.getElementById("graph").offsetWidth;
+   
+    // Switch case to associate variable 'w' with the correct calling object.
+    // If the function drawGraph is called from tab 'Individual Disease', v = #graph object
+    // If the funtion drawGraph is called from tab 'Disease Category', v = #disease_category_graph object 
+    switch(tabDiv)
+    {
+      case "#graph": var w = document.getElementById("graph").offsetWidth; break;
+      case "#disease_category_graph": var w = document.getElementById("disease_category_graph").offsetWidth; break;
+    }
+    
     var force=d3.layout.force()
     .nodes(d3.values(nodes))
     .links(jsonData)
