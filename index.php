@@ -98,7 +98,7 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
                <option>Gastrointestinal cancers</option>
                <option>Leukemia cancers</option>
                <option>Endocrine cancers</option>
-               <option>Nerver cancers</option>
+               <option>Nerve cancers</option>
              </select><br>
           
             <!-- Option for network generation. Option 1 is checked by default -->

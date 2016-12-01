@@ -17,17 +17,15 @@ if(ISSET($_POST["disCategorySelected"]) and ISSET($_POST["netGenMethod"]))
     
    if($netGenMethod == 'All edges above 0.9 score, rescored to 0.05' )
   {
-    //echo "\n Inside the 1st IF condition. IF condition works\n";
-    $query = "SELECT mirna1 AS source, mirna2 AS target, score AS type FROM mirna_rescored WHERE disease='colorectal cancer' ORDER BY type DESC LIMIT 50"; //Dummy query for test
+    $query = "SELECT mirna1 AS source, mirna2 AS target, score AS type FROM mirna_rescored WHERE dis_category='".$disCategorySelected."' ORDER BY type DESC LIMIT 500";
     $queryCSV = "SELECT mirna1 AS source, mirna2 AS target, score AS type FROM mirna_rescored WHERE disease='colorectal cancer' ORDER BY type DESC LIMIT 50 into outfile '/var/www/bnet.egr.vcu.edu/public_html/mirid/CSV/network.csv' fields terminated by ','"; //Dummy query for test
 
   } //Ending if($netGenMethod...)
 
 else if($netGenMethod == 'Optimized network based on expression scores') 
   {
-  
-    //echo "\n Inside the 2nd IF condition. IF condition works\n";
-    $query = "SELECT mirna1 AS source, mirna2 AS target, score AS type FROM mirna_rescored WHERE disease='colorectal cancer' ORDER BY type DESC LIMIT 50"; //Dummy query for test
+    
+    $query = "SELECT mirna1 AS source, mirna2 AS target, score AS type FROM mirna_opt WHERE dis_category='".$disCategorySelected."' ORDER BY type DESC LIMIT 500";
     $queryCSV = "SELECT mirna1 AS source, mirna2 AS target, score AS type FROM mirna_rescored WHERE disease='colorectal cancer' ORDER BY type DESC LIMIT 50 into outfile '/var/www/bnet.egr.vcu.edu/public_html/mirid/CSV/network.csv' fields terminated by ','"; //Dummy query for test
 
   }
