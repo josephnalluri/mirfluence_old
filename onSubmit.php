@@ -12,17 +12,7 @@ if($counterID == 1)
 	 $disease = mysqli_real_escape_string($dbConnect, $_POST["disSelected"]);
 	 $min = mysqli_real_escape_string($dbConnect, $_POST["minSelected"]);
 	 $max = mysqli_real_escape_string($dbConnect, $_POST["maxSelected"]);
-	 $query = 
-		"SELECT 
-				m1 AS source,
-				m2 AS target,
-				score AS type 
-		FROM consensus_avg_pancancer 
-		WHERE d1=d2 
-		  AND d1= '".$disease."'
-		  AND score<'".$max."'
-		  AND score>'".$min."'
-		ORDER by type DESC limit 500";
+	 $query = "SELECT mirna1 AS source, mirna2 AS target, score AS type	FROM mirna_rescored WHERE disease='".$disease."'AND score<'".$max."'AND score>'".$min."' ORDER by type DESC limit 500";
 
      $queryCSV = "SELECT m1 AS source, m2 AS target, score AS type FROM consensus_avg_pancancer WHERE d1=d2 AND d1='".$disease."' AND score<'".$max."' AND score>'".$min."' ORDER by type into outfile '/var/www/bnet.egr.vcu.edu/public_html/miRsig/CSV/network.csv' fields terminated by ','";
 	
