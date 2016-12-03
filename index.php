@@ -1,7 +1,7 @@
 <?php
 //Header files
 require_once('dbAcess.php');  // Connect to Database
-//$query = "SELECT d1 from d1_from_consensus order by d1 asc";
+//$query = "SELECT d1 as disease from d1_from_consensus order by d1 asc";
 $query = "SELECT distinct disease from mirna_rescored order by disease asc";
 $queryResult = mysqli_query($dbConnect, $query) or die("Error in the query" . mysqli_error($dbConnect));
 
@@ -38,6 +38,29 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
  
 <body onload="fillDropdown()">
 <div class="container">
+
+   <!-- Modal. Recommeded to place it at the top of the DOM tree -->
+   <!-- Taken from: https://myzeroorone.wordpress.com/2015/03/02/creating-simple-please-wait-dialog-with-twitter-bootstrap/--> 
+   <!-- Modal Start here-->
+   <div class="modal fade bs-example-modal-sm" id="myPleaseWait" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+ 	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">
+					<span class="glyphicon glyphicon-time">
+					</span> Please Wait... loading results and visualization
+				 </h5>
+			</div> <!-- End div for class modal-header -->
+			<div class="modal-body">
+				<div class="progress">
+					<div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 100%"></div>
+				</div> <!-- End div for class=progress  -->
+			</div><!-- End div tag for class=modal-body  -->
+		</div> <!-- End div tag for class=modal-content -->
+	</div><!-- End div tag for class=modal-dialog -->
+   </div><!-- End div tag for class=modal fade -->
+   <!-- Modal ends Here -->
+
   <div class="jumbotron">
     <h1>Identifying influential miRNA targets in diseases via influence diffusion model</h1>
   </div><!-- End div for jumbotron-->
@@ -62,60 +85,12 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
          <li><a href="#create_category" data-toggle="tab">Create your own category</a></li>
       </ul>
 
-    <!-- Implementing tab panel for "Individual disease" -->
+    <!-- Implementing tab panel content -->
      <div class="tab-content">
-    
-      <div class="tab-pane" id="individual_disease">
-      <h5>Please select a disease below</h5>
-		 <form id = "form">
-		  <div id = "selectDiseaseform">
-		   <select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
-		  </div> <!-- End div tag for id selectDiseaseform -->
-            <br>		  
-			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
-			<br><br>
-			
-			Maximum Score: <input type="text" id="max" name="max" size="4">  &nbsp;  &nbsp;
-			Minimum Score: <input type="text" id="min" name="min" size="4"> &nbsp;  &nbsp; <i>[<b>Default</b>: Max is 1 and Min is 0.5000]</i>		
-		   
-		    <hr>
-			  <button onclick = "onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
-			  
-			   <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
-	        <br><br>
-	     </form>
-	 
-	   <!-- Taken from: https://myzeroorone.wordpress.com/2015/03/02/creating-simple-please-wait-dialog-with-twitter-bootstrap/--> 
-	   <!-- Modal Start here-->
-	   <div class="modal fade bs-example-modal-sm" id="myPleaseWait" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
-	 	<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">
-						<span class="glyphicon glyphicon-time">
-						</span> Please Wait... loading results and visualization
-					 </h5>
-				</div> <!-- End div for class modal-header -->
-				<div class="modal-body">
-					<div class="progress">
-						<div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 100%"></div>
-					</div> <!-- End div for class=progress  -->
-				</div><!-- End div tag for class=modal-body  -->
-			</div> <!-- End div tag for class=modal-content -->
-		</div><!-- End div tag for class=modal-dialog -->
-	   </div><!-- End div tag for class=modal fade -->
-	   <!-- Modal ends Here -->
 
-      <a href="/miRsig/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
-
- 	  <!-- Placeholder for graph --> 
-	  <div id="graph" tabindex="0"></div>
-	  <div id = "graph-bottom"> </div>
-   </div> <!-- End div tag for id=individual_disease-->
-
-    <!-- Code for 2nd tab: Disease category -->
-    <div class="tab-pane active" id="disease_category">
-      <h5>Please choose a disease category</h5>
+     <!-- Code for 1st tab: Disease category -->
+     <div class="tab-pane active" id="disease_category">
+       <h5>Please choose a disease category</h5>
 		 <form id = "disease_category_form">
 		  <div id = "disease_category_selectDiseaseform">
 		     <select name ="disease_category_dis" id = "disease_category_selectDropdown" class="form-control"> 
@@ -123,7 +98,7 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
                <option>Gastrointestinal cancers</option>
                <option>Leukemia cancers</option>
                <option>Endocrine cancers</option>
-               <option>Nerver cancers</option>
+               <option>Nerve cancers</option>
              </select><br>
           
             <!-- Option for network generation. Option 1 is checked by default -->
@@ -141,19 +116,51 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 	      <br><br>
 	    </form>
       
-     <a href="/mirid/CSV/network.csv" id="disease_category_downloadCSV" style="display:none;"> Download the network (CSV) </a>
+       <a href="/mirid/CSV/network.csv" id="disease_category_downloadCSV" style="display:none;"> Download the network (CSV) </a>
 
-     <!-- Placeholder for disease category graph -->
-     <div id="disease_category_graph" tabindex="0"></div>
-     
+      <!-- Placeholder for disease category graph -->
+      <div id="disease_category_graph" tabindex="0"></div>
+     </div> <!-- End div for id=disease_category -->
 
-  </div> <!-- End div for id=disease_category -->
+     <!-- Implementing tab content for 2nd tab - Individual Disease tab-->
+      <div class="tab-pane" id="individual_disease">
+       <h4>This tab is for individual disease </h4>
+      <!-- Insert code here -->
+       
+     </div> <!-- End div tag for id=individual_disease-->
+
    
 
-    <!-- Code for 3rd tab: Create your own category-->
-    <div class="tab-pane" id="create_category">
-       <h4>This tab is for creating your own category</h4>
-    </div><!-- End div tag for id=create_category -->
+      <!-- Code for 3rd tab: Create your own category-->
+      <div class="tab-pane" id="create_category">
+       <h5>Please select a disease below</h5>
+		 <form id = "form">
+		  <div id = "selectDiseaseform">
+		   <select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
+		  </div> <!-- End div tag for id selectDiseaseform -->
+            <br>		  
+			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
+			<br><br>
+			
+			<!-- 
+            Maximum Score: <input type="text" id="max" name="max" size="4">  &nbsp;  &nbsp;
+			Minimum Score: <input type="text" id="min" name="min" size="4"> &nbsp;  &nbsp; <i>[<b>Default</b>: Max is 1 and Min is 0.5000]</i>		
+		    
+            Display <input type="number" name="numberOfEdges" value="500" style="width: 4em"> results. (Edges in the visual network)
+            --> 
+		    <hr>
+			  <button onclick = "onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
+			  
+			   <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
+	        <br><br>
+	     </form>
+	 
+      <a href="/mirid/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
+
+ 	  <!-- Placeholder for graph --> 
+	  <div id="graph" tabindex="0"></div>
+	  <div id = "graph-bottom"> </div>
+      </div><!-- End div tag for id=create_category -->
 
   </div> <!-- End div tag for class=tab-content-->
  </div> <!-- End div tag for class="col-sm-10"-->
@@ -273,39 +280,39 @@ function isBlank(str)
 <script type="text/javascript">
 function onSubmit(){
    	var disSelected = document.getElementById("selectDropdown").value;
-	var minSelected = document.getElementById("min").value;
-	var maxSelected = document.getElementById("max").value;
-    if(isEmpty(minSelected)||isBlank(minSelected)) {minSelected=0;}
-    if(isEmpty(maxSelected)||isBlank(maxSelected)){maxSelected=1;}
+	//var minSelected = document.getElementById("min").value;
+	//var maxSelected = document.getElementById("max").value;
+    //if(isEmpty(minSelected)||isBlank(minSelected)) {minSelected=0;}
+    //if(isEmpty(maxSelected)||isBlank(maxSelected)){maxSelected=1;}
 	
 	// To decide the AJAX request based on number of inputs.
 	switch(counterID)
 	{ 
 	  case 1: var params = {'disSelected':disSelected,
-	          'minSelected':minSelected,
-			  'maxSelected':maxSelected,
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
 			  'counterID':counterID};	
 	          break;
 			  
 	  case 2: var params = {'disSelected':disSelected,
 	          'disSelected2': document.getElementById("selectDropdown1").value,
-	          'minSelected':minSelected,
-			  'maxSelected':maxSelected,
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
 			  'counterID':counterID};	
 			  break;
 	  case 3: var params = {'disSelected':disSelected,
 	          'disSelected2': document.getElementById("selectDropdown1").value,
 			  'disSelected3': document.getElementById("selectDropdown2").value,
-	          'minSelected':minSelected,
-			  'maxSelected':maxSelected,
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
 			  'counterID':counterID};
 	          break;
 	  case 4: var params = {'disSelected':disSelected,
 	          'disSelected2': document.getElementById("selectDropdown1").value,
 			  'disSelected3': document.getElementById("selectDropdown2").value,
 			  'disSelected4': document.getElementById("selectDropdown3").value,
-	          'minSelected':minSelected,
-			  'maxSelected':maxSelected,
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
 			  'counterID':counterID};
 	          break;
 	  case 5: var params = {'disSelected':disSelected,
@@ -313,8 +320,8 @@ function onSubmit(){
 			  'disSelected3': document.getElementById("selectDropdown2").value,
 			  'disSelected4': document.getElementById("selectDropdown3").value,
 			  'disSelected5': document.getElementById("selectDropdown4").value,
-	          'minSelected':minSelected,
-			  'maxSelected':maxSelected,
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
 			  'counterID':counterID};
 	          break;
 	}	
@@ -322,6 +329,7 @@ function onSubmit(){
 	//Ajax request
 	$.ajax({
 	type: "POST",
+   // dataType: "json",
 	url: "onSubmit.php",
 	/*
 	data: {'disSelected':disSelected,
@@ -375,6 +383,7 @@ function disease_category_onSubmit(){
   // Ajax request
   $.ajax({
   type: "POST",
+  //dataType: "json",
   url: "disease_category_onSubmit.php",
   data: {'disCategorySelected':disCategorySelected,
          'netGenMethod':netGenMethod},
@@ -389,7 +398,8 @@ function disease_category_onSubmit(){
               alert("No results for this selection. Please try reducing the number of diseases or widening the range of score. ");
            }
           else
-           {  console.log(dataReceived);
+           {  //console.log("Data received!!! now create graph - > ");
+              //console.log(dataReceived);
               createGraph(JSON.parse(dataReceived),"#disease_category_graph"); 
            }
          }
