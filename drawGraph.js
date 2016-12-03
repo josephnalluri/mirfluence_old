@@ -61,7 +61,14 @@ for(var i=0;i<jsonData.length;i++) {
     {
       case "#graph": var w = document.getElementById("graph").offsetWidth; break;
       case "#disease_category_graph": var w = document.getElementById("disease_category_graph").offsetWidth; break;
+<<<<<<< HEAD
       case "#single_dis_graph": var w = document.getElementById("single_dis_graph").offsetWidth; break;
+=======
+<<<<<<< HEAD
+      case "#single_dis_graph": var w = document.getElementById("single_dis_graph").offsetWidth; break;
+=======
+>>>>>>> 439bc48c12e9af80487f6d150d974a78a89c8d66
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
     }
     
     var force=d3.layout.force()
