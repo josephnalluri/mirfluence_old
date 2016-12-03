@@ -124,15 +124,44 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 
      <!-- Implementing tab content for 2nd tab - Individual Disease tab-->
       <div class="tab-pane" id="individual_disease">
+<<<<<<< HEAD
        <h4>This tab is for individual disease </h4>
       <!-- Insert code here -->
        
      </div> <!-- End div tag for id=individual_disease-->
+=======
+      <h5>Please select a disease below</h5>
+		 <form id = "form">
+		  <div id = "selectDiseaseform">
+		   <select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
+		  </div> <!-- End div tag for id selectDiseaseform -->
+            <br>		  
+			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
+			<br><br>
+			
+			Maximum Score: <input type="text" id="max" name="max" size="4">  &nbsp;  &nbsp;
+			Minimum Score: <input type="text" id="min" name="min" size="4"> &nbsp;  &nbsp; <i>[<b>Default</b>: Max is 1 and Min is 0.5000]</i>		
+		   
+		    <hr>
+			  <button onclick = "onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
+			  
+			   <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
+	        <br><br>
+	     </form>
+	 
+      <a href="/miRsig/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
+
+ 	  <!-- Placeholder for graph --> 
+	  <div id="graph" tabindex="0"></div>
+	  <div id = "graph-bottom"> </div>
+      </div> <!-- End div tag for id=individual_disease-->
+>>>>>>> 439bc48c12e9af80487f6d150d974a78a89c8d66
 
    
 
       <!-- Code for 3rd tab: Create your own category-->
       <div class="tab-pane" id="create_category">
+<<<<<<< HEAD
        <h5>Please select a disease below</h5>
 		 <form id = "form">
 		  <div id = "selectDiseaseform">
@@ -160,6 +189,9 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
  	  <!-- Placeholder for graph --> 
 	  <div id="graph" tabindex="0"></div>
 	  <div id = "graph-bottom"> </div>
+=======
+       <h4>This tab is for creating your own category</h4>
+>>>>>>> 439bc48c12e9af80487f6d150d974a78a89c8d66
       </div><!-- End div tag for id=create_category -->
 
   </div> <!-- End div tag for class=tab-content-->
