@@ -126,6 +126,13 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 	    </form>
       
        <a href="/mirid/CSV/network.csv" id="disease_category_downloadCSV" style="display:none;"> Download the network (CSV) </a>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
 
       <!-- Placeholder for disease category graph -->
       <div id="disease_category_graph" tabindex="0"></div>
@@ -143,6 +150,7 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
             <select name="single_dis_network_gen_method" id="single_dis_network_gen_method_dropdown" class="form-control">
               <option selected="selected">All edges above 0.9 score, rescored to 0.05</option>
               <option>Optimized network based on expression scores</option>
+<<<<<<< HEAD
             </select><br>
 
             <!-- Option for infusion diffusion methodology. Option 1 is checked by default -->
@@ -151,6 +159,10 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
               <option selected="selected">Intersection (Logical OR) approach</option>
               <option>Cumulative Union</option>
             </select>
+=======
+            </select>
+
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
         </div> <!-- End div for div id="singleDiseaseForm"-->  
         
            <br>
@@ -159,25 +171,97 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
          </form>
 
      
+<<<<<<< HEAD
       <a href="/mirid/CSV/network.csv" id="single_disease_downloadCSV" style="display:none;">Download the network (CSV)</a>
 
  	  <!-- Placeholder for graph --> 
 	  <div id="single_disease_graph" tabindex="0"></div>
      </div> <!-- End div tag for id=individual_disease-->
-   
+=======
+<<<<<<< HEAD
+      <a href="/mirid/CSV/network.csv" id="single_disease_downloadCSV" style="display:none;">Download the network (CSV)</a>
 
-      <!-- Code for 3rd tab: Create your own category-->
-      <div class="tab-pane" id="create_category">
-       <h5>Please select a disease below</h5>
+ 	  <!-- Placeholder for graph --> 
+	  <div id="single_disease_graph" tabindex="0"></div>
+     </div> <!-- End div tag for id=individual_disease-->
+=======
+      <a href="/mirid/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
+
+ 	  <!-- Placeholder for graph --> 
+	  <div id="single_disease_graph" tabindex="0"></div>
+     </div> <!-- End div tag for id=individual_disease-->
+=======
+
+      <!-- Placeholder for disease category graph -->
+      <div id="disease_category_graph" tabindex="0"></div>
+     </div> <!-- End div for id=disease_category -->
+
+     <!-- Implementing tab content for 2nd tab - Individual Disease tab-->
+      <div class="tab-pane" id="individual_disease">
+<<<<<<< HEAD
+       <h4>This tab is for individual disease </h4>
+      <!-- Insert code here -->
+       
+     </div> <!-- End div tag for id=individual_disease-->
+=======
+      <h5>Please select a disease below</h5>
 		 <form id = "form">
 		  <div id = "selectDiseaseform">
 		   <select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
-  
 		  </div> <!-- End div tag for id selectDiseaseform -->
             <br>		  
 			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
 			<br><br>
 			
+			Maximum Score: <input type="text" id="max" name="max" size="4">  &nbsp;  &nbsp;
+			Minimum Score: <input type="text" id="min" name="min" size="4"> &nbsp;  &nbsp; <i>[<b>Default</b>: Max is 1 and Min is 0.5000]</i>		
+		   
+		    <hr>
+			  <button onclick = "onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
+			  
+			   <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
+	        <br><br>
+	     </form>
+	 
+      <a href="/miRsig/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
+
+ 	  <!-- Placeholder for graph --> 
+	  <div id="graph" tabindex="0"></div>
+	  <div id = "graph-bottom"> </div>
+      </div> <!-- End div tag for id=individual_disease-->
+>>>>>>> 439bc48c12e9af80487f6d150d974a78a89c8d66
+
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
+   
+
+      <!-- Code for 3rd tab: Create your own category-->
+      <div class="tab-pane" id="create_category">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
+       <h5>Please select a disease below</h5>
+		 <form id = "form">
+		  <div id = "selectDiseaseform">
+		   <select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
+		  </div> <!-- End div tag for id selectDiseaseform -->
+            <br>		  
+			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
+			<br><br>
+			
+<<<<<<< HEAD
             <!-- Option for network generation. Option 1 is checked by default -->
             <h5>Please choose a network generation method</h5>
             <select name="category_network_gen_method" id="category_network_gen_method_dropdown" class="form-control">
@@ -191,6 +275,8 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
               <option selected="selected">Intersection (Logical OR) approach</option>
               <option>Cumulative Union</option>
             </select>
+=======
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
 			<!-- 
             Maximum Score: <input type="text" id="max" name="max" size="4">  &nbsp;  &nbsp;
 			Minimum Score: <input type="text" id="min" name="min" size="4"> &nbsp;  &nbsp; <i>[<b>Default</b>: Max is 1 and Min is 0.5000]</i>		
@@ -209,6 +295,18 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
  	  <!-- Placeholder for graph --> 
 	  <div id="graph" tabindex="0"></div>
 	  <div id = "graph-bottom"> </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+       <h4>This tab is for creating your own category</h4>
+>>>>>>> 439bc48c12e9af80487f6d150d974a78a89c8d66
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
       </div><!-- End div tag for id=create_category -->
 
   </div> <!-- End div tag for class=tab-content-->
@@ -348,28 +446,87 @@ function isBlank(str)
 <script type="text/javascript">
 function onSubmit(){
    	var disSelected = document.getElementById("selectDropdown").value;
+<<<<<<< HEAD
 	var netGenMethod = document.getElementById("category_network_gen_method_dropdown").value;
   
    // To decide the AJAX request based on number of inputs.
 	switch(counterID)
 	{ 
 	  case 1: var params = {'disSelected':disSelected,
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	//var minSelected = document.getElementById("min").value;
+	//var maxSelected = document.getElementById("max").value;
+    //if(isEmpty(minSelected)||isBlank(minSelected)) {minSelected=0;}
+    //if(isEmpty(maxSelected)||isBlank(maxSelected)){maxSelected=1;}
+	
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+	// To decide the AJAX request based on number of inputs.
+	switch(counterID)
+	{ 
+	  case 1: var params = {'disSelected':disSelected,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
 			  'counterID':counterID};	
 	          break;
 			  
 	  case 2: var params = {'disSelected':disSelected,
 	          'disSelected2': document.getElementById("selectDropdown1").value,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
 			  'counterID':counterID};	
 			  break;
 	  case 3: var params = {'disSelected':disSelected,
 	          'disSelected2': document.getElementById("selectDropdown1").value,
 			  'disSelected3': document.getElementById("selectDropdown2").value,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
 			  'counterID':counterID};
 	          break;
 	  case 4: var params = {'disSelected':disSelected,
 	          'disSelected2': document.getElementById("selectDropdown1").value,
 			  'disSelected3': document.getElementById("selectDropdown2").value,
 			  'disSelected4': document.getElementById("selectDropdown3").value,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
 			  'counterID':counterID};
 	          break;
 	  case 5: var params = {'disSelected':disSelected,
@@ -377,6 +534,17 @@ function onSubmit(){
 			  'disSelected3': document.getElementById("selectDropdown2").value,
 			  'disSelected4': document.getElementById("selectDropdown3").value,
 			  'disSelected5': document.getElementById("selectDropdown4").value,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	          //'minSelected':minSelected,
+			  //'maxSelected':maxSelected,
+>>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
 			  'counterID':counterID};
 	          break;
 	}	
@@ -481,6 +649,10 @@ function singleDisease_onSubmit(){
  var netGenMethod = document.getElementById("single_dis_network_gen_method_dropdown").value;
  
  //window.alert(disSelected + "  " + netGenMethod);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
    
   $("#myPleaseWait").modal("show");
   // Ajax request
@@ -518,6 +690,12 @@ function singleDisease_onSubmit(){
       console.log(errorThrown);
     }  
 }); 
+<<<<<<< HEAD
+=======
+=======
+  
+>>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
+>>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
 
 }
 </script> <!-- End script tag for singleDisease_onSubmit() -->
