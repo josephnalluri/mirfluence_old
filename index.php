@@ -64,12 +64,12 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
    <!-- Modal ends Here -->
 
   <div class="jumbotron">
-    <h1>Identifying influential miRNA targets in diseases via influence diffusion model</h1>
+    <h1><i>miRfluence</i></h1><h2> ~ Identify <b><u>miR</u></b>NAs which in<b><u>fluence</u></b> other miRNAs in diseases via influence diffusion model</h2>
   </div><!-- End div for jumbotron-->
   <div class="row">
     <div class="col-sm-10">
 	
-      <h3>This tool predicts influential disease-miRNAs in several diseases based on influence diffusion model. These miRNAs tend to work closely in diseases of similar profiles. </h3>
+      <h4>This tool predicts influential disease-miRNAs in several diseases using an influence diffusion algorithm. The detected miRNAs have the highest coverage and impact-ability in a miRNA-miRNA network in a particular disease </h4>
 	
 	  <div class="alert alert-success">
          <strong>Note:</strong> <br>
@@ -89,22 +89,6 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 
     <!-- Implementing tab panel content -->
      <div class="tab-content">
-<<<<<<< HEAD
-
-     <!-- Code for 1st tab: Disease category -->
-     <div class="tab-pane active" id="disease_category">
-       <h5>Please choose a disease category</h5>
-		 <form id = "disease_category_form">
-		  <div id = "disease_category_selectDiseaseform">
-		     <select name ="disease_category_dis" id = "disease_category_selectDropdown" class="form-control"> 
-               <option>Choose disease category</option>
-               <option>Gastrointestinal cancers</option>
-               <option>Leukemia cancers</option>
-               <option>Endocrine cancers</option>
-               <option>Nerve cancers</option>
-             </select><br>
-          
-=======
 
      <!-- Code for 1st tab: Disease category -->
      <div class="tab-pane active" id="disease_category">
@@ -143,168 +127,6 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
 	    </form>
       
        <a href="/mirid/CSV/network.csv" id="disease_category_downloadCSV" style="display:none;"> Download the network (CSV) </a>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
-
-      <!-- Placeholder for disease category graph -->
-      <div id="disease_category_graph" tabindex="0"></div>
-     </div> <!-- End div for id=disease_category -->
-
-     <!-- Implementing tab content for 2nd tab - Individual Disease tab-->
-      <div class="tab-pane" id="individual_disease">
-        <h5>Please select a disease below</h5>
-        <form id="single_disease_form">
-         <div id= "singleDiseaseForm">
-           <select name = "single_dis" id = "singlediseaseDropdown" class="form-control"> </select> <br>
-
-            <!-- Option for network generation. Option 1 is checked by default -->
-            <h5>Please choose a network generation method</h5>
-            <select name="single_dis_network_gen_method" id="single_dis_network_gen_method_dropdown" class="form-control">
-              <option selected="selected">All edges above 0.9 score, rescored to 0.05</option>
-              <option>Optimized network based on expression scores</option>
-<<<<<<< HEAD
-            </select><br>
-
-            <!-- Option for infusion diffusion methodology. Option 1 is checked by default -->
-            <h5>Please choose an infusion diffusion methodology </h5>
-            <select name="single_dis_infusion_diff_method" id="single_dis_infusion_diff_method_dropdown" class="form-control">
-              <option selected="selected">Intersection (Logical OR) approach</option>
-              <option>Cumulative Union</option>
-            </select>
-=======
-            </select>
-
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
-        </div> <!-- End div for div id="singleDiseaseForm"-->  
-        
-           <br>
-           <button onclick = "singleDisease_onSubmit()" type="button" class="btn btn-success" id="btn-submit">SUBMIT</button> &nbsp; &nbsp;
-           <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onclick="window.location.reload()"> </button>
-         </form>
-
-     
-<<<<<<< HEAD
-      <a href="/mirid/CSV/network.csv" id="single_disease_downloadCSV" style="display:none;">Download the network (CSV)</a>
-
- 	  <!-- Placeholder for graph --> 
-	  <div id="single_disease_graph" tabindex="0"></div>
-     </div> <!-- End div tag for id=individual_disease-->
-=======
-<<<<<<< HEAD
-      <a href="/mirid/CSV/network.csv" id="single_disease_downloadCSV" style="display:none;">Download the network (CSV)</a>
-
- 	  <!-- Placeholder for graph --> 
-	  <div id="single_disease_graph" tabindex="0"></div>
-     </div> <!-- End div tag for id=individual_disease-->
-=======
-      <a href="/mirid/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
-
- 	  <!-- Placeholder for graph --> 
-	  <div id="single_disease_graph" tabindex="0"></div>
-     </div> <!-- End div tag for id=individual_disease-->
-=======
-
-      <!-- Placeholder for disease category graph -->
-      <div id="disease_category_graph" tabindex="0"></div>
-     </div> <!-- End div for id=disease_category -->
-
-     <!-- Implementing tab content for 2nd tab - Individual Disease tab-->
-      <div class="tab-pane" id="individual_disease">
-<<<<<<< HEAD
-       <h4>This tab is for individual disease </h4>
-      <!-- Insert code here -->
-       
-     </div> <!-- End div tag for id=individual_disease-->
-=======
-      <h5>Please select a disease below</h5>
-		 <form id = "form">
-		  <div id = "selectDiseaseform">
-		   <select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
-		  </div> <!-- End div tag for id selectDiseaseform -->
-            <br>		  
-			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
-			<br><br>
-			
-			Maximum Score: <input type="text" id="max" name="max" size="4">  &nbsp;  &nbsp;
-			Minimum Score: <input type="text" id="min" name="min" size="4"> &nbsp;  &nbsp; <i>[<b>Default</b>: Max is 1 and Min is 0.5000]</i>		
-		   
-		    <hr>
-			  <button onclick = "onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
-			  
-			   <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
-	        <br><br>
-	     </form>
-	 
-      <a href="/miRsig/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
-
- 	  <!-- Placeholder for graph --> 
-	  <div id="graph" tabindex="0"></div>
-	  <div id = "graph-bottom"> </div>
-      </div> <!-- End div tag for id=individual_disease-->
->>>>>>> 439bc48c12e9af80487f6d150d974a78a89c8d66
-
->>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
-   
-
-      <!-- Code for 3rd tab: Create your own category-->
-      <div class="tab-pane" id="create_category">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
-       <h5>Please select a disease below</h5>
-		 <form id = "form">
-		  <div id = "selectDiseaseform">
-		   <select name ="dis" id = "selectDropdown" class="form-control">  </select> <br>
-<<<<<<< HEAD
-  
-=======
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
-		  </div> <!-- End div tag for id selectDiseaseform -->
-            <br>		  
-			<button  type="button" onclick = "addDisease()" class="btn btn-primary" id="btn-addDisease"> Select more diseases</button>
-			<br><br>
-			
-<<<<<<< HEAD
->>>>>>> 4e8afc97dd42232c3c41181fdb08a3552582e99c
-            <!-- Option for network generation. Option 1 is checked by default -->
-            <h5>Please choose a network generation method</h5>
-            <select name="category_network_gen_method" id="category_network_gen_method_dropdown" class="form-control">
-              <option selected="selected">All edges above 0.9 score, rescored to 0.05</option>
-              <option>Optimized network based on expression scores</option>
-            </select><br>
-<<<<<<< HEAD
-
-            
-            <!-- Option for infusion diffusion methodology. Option 1 is checked by default -->
-            <h5>Please choose an infusion diffusion methodology </h5>
-            <select name="infusion_diff_method" id="infusion_diff_method_dropdown" class="form-control">
-              <option selected="selected">Intersection (Logical OR) approach</option>
-              <option>Cumulative Union</option>
-            </select>
-          
-	      </div> <!-- End div tag for id=disease_category_selectDiseaseform -->
-          <br>		  
-	      <hr>
-		  <button onclick = "disease_category_onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
-		  <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
-	      <br><br>
-	    </form>
-      
-       <a href="/mirid/CSV/network.csv" id="disease_category_downloadCSV" style="display:none;"> Download the network (CSV) </a>
 
       <!-- Placeholder for disease category graph -->
       <div id="disease_category_graph" tabindex="0"></div>
@@ -324,12 +146,12 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
               <option>Optimized network based on expression scores</option>
             </select><br>
 
-            <!-- Option for infusion diffusion methodology. Option 1 is checked by default -->
+            <!-- Option for infusion diffusion methodology. Option 1 is checked by default 
             <h5>Please choose an infusion diffusion methodology </h5>
             <select name="single_dis_infusion_diff_method" id="single_dis_infusion_diff_method_dropdown" class="form-control">
               <option selected="selected">Intersection (Logical OR) approach</option>
               <option>Cumulative Union</option>
-            </select>
+            </select> -->
         </div> <!-- End div for div id="singleDiseaseForm"-->  
         
            <br>
@@ -388,47 +210,6 @@ unlink('CSV/network.csv'); // To delete the previous network CSV file
  	  <!-- Placeholder for graph --> 
 	  <div id="graph" tabindex="0"></div>
 	  <div id = "graph-bottom"> </div>
-=======
- 
-            <!-- Option for infusion diffusion methodology. Option 1 is checked by default -->
-            <h5>Please choose an infusion diffusion methodology </h5>
-            <select name="category_infusion_diff_method" id="category_infusion_diff_method_dropdown" class="form-control">
-              <option selected="selected">Intersection (Logical OR) approach</option>
-              <option>Cumulative Union</option>
-            </select>
-=======
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
-			<!-- 
-            Maximum Score: <input type="text" id="max" name="max" size="4">  &nbsp;  &nbsp;
-			Minimum Score: <input type="text" id="min" name="min" size="4"> &nbsp;  &nbsp; <i>[<b>Default</b>: Max is 1 and Min is 0.5000]</i>		
-		    
-            Display <input type="number" name="numberOfEdges" value="500" style="width: 4em"> results. (Edges in the visual network)
-            --> 
-		    <hr>
-			  <button onclick = "onSubmit()" type="button" class="btn btn-success" id="btn-submit"> SUBMIT</button>  &nbsp;  &nbsp;
-			  
-			   <input type="reset" class="btn btn-info" id="btn-reset" value="RESET" onClick="window.location.reload()"> </button>
-	        <br><br>
-	     </form>
-	 
-      <a href="/mirid/CSV/network.csv" id="downloadCSV" style="display:none;">Download the network (CSV)</a>
-
- 	  <!-- Placeholder for graph --> 
-	  <div id="graph" tabindex="0"></div>
-	  <div id = "graph-bottom"> </div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
-       <h4>This tab is for creating your own category</h4>
->>>>>>> 439bc48c12e9af80487f6d150d974a78a89c8d66
->>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
->>>>>>> 4e8afc97dd42232c3c41181fdb08a3552582e99c
       </div><!-- End div tag for id=create_category -->
 
   </div> <!-- End div tag for class=tab-content-->
@@ -568,105 +349,28 @@ function isBlank(str)
 <script type="text/javascript">
 function onSubmit(){
    	var disSelected = document.getElementById("selectDropdown").value;
-<<<<<<< HEAD
 	var netGenMethod = document.getElementById("category_network_gen_method_dropdown").value;
   
    // To decide the AJAX request based on number of inputs.
 	switch(counterID)
 	{ 
 	  case 1: var params = {'disSelected':disSelected,
-=======
-<<<<<<< HEAD
-	var netGenMethod = document.getElementById("category_network_gen_method_dropdown").value;
-  
-   // To decide the AJAX request based on number of inputs.
-	switch(counterID)
-	{ 
-	  case 1: var params = {'disSelected':disSelected,
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	//var minSelected = document.getElementById("min").value;
-	//var maxSelected = document.getElementById("max").value;
-    //if(isEmpty(minSelected)||isBlank(minSelected)) {minSelected=0;}
-    //if(isEmpty(maxSelected)||isBlank(maxSelected)){maxSelected=1;}
-	
->>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
-	// To decide the AJAX request based on number of inputs.
-	switch(counterID)
-	{ 
-	  case 1: var params = {'disSelected':disSelected,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	          //'minSelected':minSelected,
-			  //'maxSelected':maxSelected,
->>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
->>>>>>> 4e8afc97dd42232c3c41181fdb08a3552582e99c
 			  'counterID':counterID};	
 	          break;
 			  
 	  case 2: var params = {'disSelected':disSelected,
 	          'disSelected2': document.getElementById("selectDropdown1").value,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	          //'minSelected':minSelected,
-			  //'maxSelected':maxSelected,
->>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
->>>>>>> 4e8afc97dd42232c3c41181fdb08a3552582e99c
 			  'counterID':counterID};	
 			  break;
 	  case 3: var params = {'disSelected':disSelected,
 	          'disSelected2': document.getElementById("selectDropdown1").value,
 			  'disSelected3': document.getElementById("selectDropdown2").value,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	          //'minSelected':minSelected,
-			  //'maxSelected':maxSelected,
->>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
->>>>>>> 4e8afc97dd42232c3c41181fdb08a3552582e99c
 			  'counterID':counterID};
 	          break;
 	  case 4: var params = {'disSelected':disSelected,
 	          'disSelected2': document.getElementById("selectDropdown1").value,
 			  'disSelected3': document.getElementById("selectDropdown2").value,
 			  'disSelected4': document.getElementById("selectDropdown3").value,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	          //'minSelected':minSelected,
-			  //'maxSelected':maxSelected,
->>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
->>>>>>> 4e8afc97dd42232c3c41181fdb08a3552582e99c
 			  'counterID':counterID};
 	          break;
 	  case 5: var params = {'disSelected':disSelected,
@@ -674,20 +378,6 @@ function onSubmit(){
 			  'disSelected3': document.getElementById("selectDropdown2").value,
 			  'disSelected4': document.getElementById("selectDropdown3").value,
 			  'disSelected5': document.getElementById("selectDropdown4").value,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	          //'minSelected':minSelected,
-			  //'maxSelected':maxSelected,
->>>>>>> f500cc50b3c6a388af3001b57e834ea19fb2c73b
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
->>>>>>> 4e8afc97dd42232c3c41181fdb08a3552582e99c
 			  'counterID':counterID};
 	          break;
 	}	
@@ -792,13 +482,6 @@ function singleDisease_onSubmit(){
  var netGenMethod = document.getElementById("single_dis_network_gen_method_dropdown").value;
  
  //window.alert(disSelected + "  " + netGenMethod);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
->>>>>>> 4e8afc97dd42232c3c41181fdb08a3552582e99c
    
   $("#myPleaseWait").modal("show");
   // Ajax request
@@ -836,15 +519,6 @@ function singleDisease_onSubmit(){
       console.log(errorThrown);
     }  
 }); 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
-  
->>>>>>> cbabcb9975ce207f5467e326e113d611137dab35
->>>>>>> 36ae713b236c96051f024feb2903cedb75c18f7e
->>>>>>> 4e8afc97dd42232c3c41181fdb08a3552582e99c
 
 }
 </script> <!-- End script tag for singleDisease_onSubmit() -->
